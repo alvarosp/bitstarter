@@ -2,8 +2,13 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
+var dataRead;
+fs.readFile('index.html',function(err, data){
+	dataRead = data;
+});
+
 app.get('/', function(request, response) {
-  response.send('Hello World 2!');
+	response.send(dataRead);
 });
 
 var port = process.env.PORT || 5000;
